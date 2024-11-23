@@ -4,7 +4,6 @@
 import numpy as np
 from scipy import integrate
 
-integrate.solve_ivp()
 
 mu = 2
 def Ode(r,y):
@@ -28,3 +27,12 @@ for rhoC in pc:
     r_wd40 = sovler.t_events[0][0]
     m_wd40 = sovler.sol((r_wd40))[1]
     ans.append((rhoC,r_wd40,m_wd40))
+
+### part 2
+from astropy.constants import G, M_sun, R_sun, m_e,m_p,h
+mu_e = 2
+r0 = 7.72e5 / mu_e 
+m0 = 5.67e33 / (mu_e**2)
+
+masses = [m * M0 / M_sun for _, _, m in ans]  
+radii = [r * R0 / R_sun for _, r, _ in ans]  
