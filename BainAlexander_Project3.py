@@ -50,3 +50,21 @@ plt.title("Mass-Radius Relation for White Dwarfs")
 plt.legend()
 plt.grid()
 plt.show()
+
+
+
+#Part 3: 
+rho_c_valuespt2 = [1e2, 1e4, 1e6]
+methods = ['DOP853', 'RK23', 'BDF'] 
+results = {}
+for i in methods:
+    results[i] = []
+    for rhoC in rho_c_valuespt2:
+        sovler = integrate.solve_ivp(Ode,[r_i,r_f],[rhoC,0], method = i,
+                                 dense_output=True,events=lambda t, y:y[0])
+    
+        r_wd40 = sovler.t_events[0][0]
+        m_wd40 = sovler.sol((r_wd40))[1]
+        results.append((rhoC,r_wd40,m_wd40))
+
+
