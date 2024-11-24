@@ -72,7 +72,7 @@ plt.show()
 #this is not the most efficient way to do this, if we wanted to be efficient 
 #we would combine this with part 1, (same can be said for part 4 with part 2)
 #but we have purposely seperated these so it is more clear what work we did for each part
-rho_c_valuespt2 = [1e2, 1e4, 1e6]
+rho_c_valuespt2 = [0.1, 1e2, 1e6]
 methods = ['DOP853', 'RK23', 'BDF'] 
 results = {}
 #this creates a for loop of length, the amount of integration methods we are trying
