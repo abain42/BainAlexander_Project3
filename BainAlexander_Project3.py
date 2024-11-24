@@ -80,3 +80,12 @@ plt.title("Answers for new SOLVE_IVP methods")
 plt.legend()
 plt.grid()
 plt.show()
+
+
+
+#part 4
+
+import pandas as pd
+file_location = r"C:\Users\Alex\Downloads\wd_mass_radius.csv"
+data = pd.read_csv(file_location)
+print(data)
