@@ -32,12 +32,12 @@ for rhoC in pc:
 ### part 2
 from astropy.constants import G, M_sun, R_sun, m_e,m_p,h
 import matplotlib.pyplot as plt
-print(M_sun)
+print(R_sun)
 mu_e = 2
-R0 = 7.72e5 / mu_e 
+R0 = 7.72e8 / mu_e 
 M0 = 5.67e33 / (mu_e**2)
 msungrams = M_sun.value*1000 
-rsuncm =R_sun.value
+rsuncm =R_sun.value*100
 masses = [m * M0 / msungrams for _, _, m in ans]  
 radii = [r * R0 / rsuncm for _, r, _ in ans]  
 print(R_sun)
@@ -88,11 +88,17 @@ plt.show()
 import pandas as pd
 file_location = r"C:\Users\Alex\Downloads\wd_mass_radius.csv"
 data = pd.read_csv(file_location)
-print(data)
-
+print(data.head())
+print(data.shape)
+datar2 = data.iloc[1:]
+datamass = datar2.iloc[:,0]
+datarad = datar2.iloc[:, 2]
+mass_err = datar2.iloc[:, 1]
+radii_err = datar2.iloc[:, 3]
 
 plt.figure(figsize=(8, 6))
 plt.plot(masses, radii, marker="o", label="Numerical Results")
+plt.errorbar(datamass,datarad,xerr =mass_err,yerr = radii_err, fmt ='o',label='Data from Tremblay et al',capsize=5)
 plt.xlabel("Mass ($M_\odot$)")
 plt.ylabel("Radius ($R_\odot$)")
 plt.title("Mass-Radius Relation for White Dwarfs")
