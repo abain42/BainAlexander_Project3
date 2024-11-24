@@ -65,6 +65,18 @@ for i in methods:
     
         r_wd40 = sovler.t_events[0][0]
         m_wd40 = sovler.sol((r_wd40))[1]
-        results.append((rhoC,r_wd40,m_wd40))
+        results[i].append((rhoC,r_wd40,m_wd40))
 
 
+plt.figure(figsize=(12, 8))
+for i in methods:
+    masses_new = [m * M0 / msungrams for _, _, m in results[i]]
+    radii_new = [r * R0 / rsuncm for _, r, _ in results[i]]
+    plt.plot(masses_new, radii_new, marker="o", label=f"Method: {i}")
+
+plt.xlabel("Mass ($M_\odot$)")
+plt.ylabel("Radius ($R_\odot$)")
+plt.title("Answers for new SOLVE_IVP methods")
+plt.legend()
+plt.grid()
+plt.show()
