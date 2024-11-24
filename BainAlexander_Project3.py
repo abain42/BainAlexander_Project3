@@ -89,3 +89,13 @@ import pandas as pd
 file_location = r"C:\Users\Alex\Downloads\wd_mass_radius.csv"
 data = pd.read_csv(file_location)
 print(data)
+
+
+plt.figure(figsize=(8, 6))
+plt.plot(masses, radii, marker="o", label="Numerical Results")
+plt.xlabel("Mass ($M_\odot$)")
+plt.ylabel("Radius ($R_\odot$)")
+plt.title("Mass-Radius Relation for White Dwarfs")
+plt.legend()
+plt.grid()
+plt.show()
